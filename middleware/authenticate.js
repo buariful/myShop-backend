@@ -5,7 +5,7 @@ const asyncErrors = require("./asyncErrors");
 
 exports.isAuthenticated = asyncErrors(async (req, res, next) => {
   const { token } = req.cookies;
-
+  console.log("isAuthenticated");
   if (!token) {
     return next(new ErrorHandler("Pleas login/register first", 401));
   }

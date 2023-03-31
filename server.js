@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const connectDatabase = require("./config/database");
 const chalk = require("chalk");
 
+const port = process.env.PORT || 4000;
+
 // uncaught error
 process.on("uncaughtException", (err) => {
   console.log(chalk.hex("#ff29d1")(err.message));
@@ -25,8 +27,8 @@ app.get("/", (req, res) => {
   res.send("server is running smoothly");
 });
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(`server is running on prot ${process.env.PORT}`);
+const server = app.listen(port, () => {
+  console.log(`server is running on prot ${port}`);
 });
 
 // unhandled errors

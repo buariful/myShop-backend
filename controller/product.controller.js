@@ -33,6 +33,7 @@ exports.getSingleProduct = asyncErrors(async (req, res, next) => {
 
 // create product --Admin
 exports.createPoduct = asyncErrors(async (req, res) => {
+  console.log("create product");
   req.body.user = req.user.id;
   const product = await productModel.create(req.body);
   res.status(201).json({
