@@ -8,7 +8,7 @@ const connectDatabase = () => {
       // useCreateIndex: true,
     })
     .then((data) => {
-      console.log(`Mongodb is connected on: ${data.connection.host}`);
+      console.log(`Mongodb is connected remote`);
     });
   // .catch((err) => {
   //   console.log(err);

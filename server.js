@@ -19,8 +19,6 @@ process.on("uncaughtException", (err) => {
 
 // ------- config -----------
 dotenv.config();
-// dotenv.config({ path: "config/config.env" });
-console.log("ddddddddddddddddd", process.env.DB_URI);
 // ----------- database connect -------
 connectDatabase();
 
@@ -29,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 const server = app.listen(port, () => {
-  console.log(`server is running on prot ${port}`);
+  console.log(`server is running on port ${port}`);
 });
 
 // unhandled errors

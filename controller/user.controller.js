@@ -159,7 +159,7 @@ exports.getAllUser = asyncErrors(async (req, res) => {
 });
 
 // ============== get single user (Admin) ============
-exports.getSingleUser = asyncErrors(async (req, res) => {
+exports.getSingleUser = asyncErrors(async (req, res, next) => {
   const user = await userModel.findById(req.params.id);
 
   if (!user) {
