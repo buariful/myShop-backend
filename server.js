@@ -20,7 +20,7 @@ process.on("uncaughtException", (err) => {
 // ------- config -----------
 dotenv.config();
 // dotenv.config({ path: "config/config.env" });
-
+console.log("ddddddddddddddddd", process.env.DB_URI);
 // ----------- database connect -------
 connectDatabase();
 
