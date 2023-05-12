@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   getAllProducts,
   createPoduct,
@@ -14,11 +15,11 @@ const {
 // --------------------------------
 const router = express.Router();
 
-router.route("/products").get(isAuthenticated, getAllProducts);
-// .post(isAuthenticated, roleAuthorize("admin"), createPoduct);
 router
-  .route("/product/add")
+  .route("/products")
+  .get(isAuthenticated, getAllProducts)
   .post(isAuthenticated, roleAuthorize("admin"), createPoduct);
+router.route("/product/add").post(isAuthenticated, createPoduct);
 router
   .route("/product/:id")
   .get(getSingleProduct)

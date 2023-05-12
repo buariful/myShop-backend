@@ -4,7 +4,6 @@ const connectDatabase = require("./config/database");
 const chalk = require("chalk");
 
 const port = process.env.PORT || 4000;
-
 // uncaught error
 process.on("uncaughtException", (err) => {
   console.log(chalk.hex("#ff29d1")(err.message));
@@ -19,6 +18,7 @@ process.on("uncaughtException", (err) => {
 
 // ------- config -----------
 dotenv.config();
+
 // ----------- database connect -------
 connectDatabase();
 

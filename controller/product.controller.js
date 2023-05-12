@@ -2,6 +2,7 @@ const asyncErrors = require("../middleware/asyncErrors");
 const productModel = require("../models/product.model");
 const ErrorHandler = require("../utils/errorHanler");
 const ApiFilter = require("../utils/apiFilter");
+const cloudinary = require("cloudinary").v2;
 
 // get all product
 exports.getAllProducts = asyncErrors(async (req, res) => {
@@ -31,16 +32,40 @@ exports.getSingleProduct = asyncErrors(async (req, res, next) => {
   });
 });
 
+// cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+
+const abc = "dsfsdfsdf";
 // create product --Admin
 exports.createPoduct = asyncErrors(async (req, res) => {
-  console.log("create product");
   req.body.user = req.user.id;
+
+  console.log("age");
+  await cloudinary.uploader
+    .upload("D:/pic/expressjs.png", {
+      resource_type: "image",
+      folder: "myshop-furniture",
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  console.log("pore");
+
   const product = await productModel.create(req.body);
   res.status(201).json({
     success: true,
     product,
   });
 });
+
+// upload image testing -- developing mode
 
 // update a product --Admin
 exports.updateProuduct = asyncErrors(async (req, res) => {
